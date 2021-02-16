@@ -1,3 +1,6 @@
+// tailwind.config.js
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: [
     './app/**/*.html.erb',
@@ -7,9 +10,25 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+    colors: {
+      gray: colors.blueGray,
+      black: colors.black,
+      white: colors.white,
+      indigo: colors.indigo,
+      red: colors.rose,
+      pink: colors.pink,
+      purple: colors.violet,
+      yellow: colors.amber,
+      teal: colors.teal,
+      cyan: colors.cyan,
+    }
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio')
+  ],
 }

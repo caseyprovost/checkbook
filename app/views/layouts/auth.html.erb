@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Checkbook</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,12 +11,11 @@
     <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
   </head>
 
-  <body class="font-sans font-normal leading-normal text-gray-800 bg-gray-900">
-    <%= render "shared/flash" %>
-    <%= render "shared/header" %>
-
-    <main class="px-4 lg:px-10">
-      <%= yield %>
-    </main>
+  <body class="font-sans font-normal leading-normal text-gray-200 bg-gray-900">
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-md w-full space-y-8">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

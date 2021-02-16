@@ -1,0 +1,12 @@
+<div class="mb-2">
+  <%= form.label label, class: "block text-sm font-medium text-gray-300" %>
+  <div class="mt-1">
+    <% field_type = field.to_s.include?('password') ? "password_field" : "text_field" %>
+    <%= form.public_send(field_type, field, autofocus: true, autocomplete: "#{field}", class: "appearance-none rounded-none relative block w-full px-3 py-2 border #{valid? ? 'border-teal-600' : 'border-red-500'} placeholder-gray-500 text-gray-300 #{valid? ? 'rounded-md' : 'rounded-t-md'} focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm bg-teal-700") %>
+    <% if has_errors? %>
+      <div class="bg-red-500 text-red-100 px-2 py-1 border-t border-red-500 rounded-b-md">
+        <p class="text-xs"><%= error_message %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
