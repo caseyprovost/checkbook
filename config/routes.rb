@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   end
 
   resource :dashboard, controller: "dashboard"
+  resources :accounts do
+    resources :checks, module: :accounts
+  end
 end

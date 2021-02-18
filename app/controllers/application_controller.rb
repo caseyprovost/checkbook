@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_action_cable_identifier
+
   layout :find_layout, if: :devise_controller?
+
+  include Pagy::Backend
 
   protected
 
@@ -10,6 +14,10 @@ class ApplicationController < ActionController::Base
     else
       'auth'
     end
+  end
+
+  def set_action_cable_identifier
+    cookies.encrypted[:user_id] = current_user&.id
   end
 
   def after_sign_in_path_for(resource)

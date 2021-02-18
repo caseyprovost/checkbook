@@ -12,6 +12,7 @@ module.exports = {
     extend: {},
     colors: {
       gray: colors.blueGray,
+      green: colors.emerald,
       black: colors.black,
       white: colors.white,
       indigo: colors.indigo,
@@ -21,6 +22,7 @@ module.exports = {
       yellow: colors.amber,
       teal: colors.teal,
       cyan: colors.cyan,
+      transparent: 'transparent'
     }
   },
   variants: {

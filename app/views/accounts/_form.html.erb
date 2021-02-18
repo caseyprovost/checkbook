@@ -1,0 +1,33 @@
+<%= form_with(model: account, html: { id: "account_form", data: { "modal-target" => "form" } }) do |form| %>
+  <div class="text-left">
+    <%= form.label :name, "Name your account" %>
+    <%= form.text_field :name, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md", placeholder: "ex: Personal Checking" %>
+    <% if account.errors[:name].any? %>
+      <p class="form-error text-xs mt-1 ml-2">
+        <%= form.object.errors[:name].join(", ") %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="text-left mt-4">
+    <%= form.label :bank, "Bank Name" %>
+    <%= form.text_field :bank, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md", placeholder: "ex: Chase Manhattan" %>
+    <% if form.object.errors[:bank].any? %>
+      <p class="form-error text-xs mt-1 ml-2">
+        <%= form.object.errors[:bank].join(", ") %>
+      </p>
+    <% end %>
+  </div>
+
+   <div class="text-left mt-4">
+    <%= form.label :starting_balance, "How much money is in the account right now?" %>
+    <%= form.text_field :starting_balance, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md", placeholder: "ex: 200.34" %>
+    <% if form.object.errors[:starting_balance].any? %>
+      <p class="form-error text-xs mt-1 ml-2">
+        <%= form.object.errors[:starting_balance].join(", ") %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= form.submit "hiding", class: "hidden" %>
+<% end %>

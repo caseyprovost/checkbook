@@ -9,3 +9,53 @@
     @apply outline-none ring-teal-500 border-teal-500 z-10;
   }
 }
+
+.btn {
+  @apply inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white;
+
+  &:focus {
+    @apply outline-none ring-2 ring-offset-2
+  }
+}
+
+.btn.btn-sm {
+  @apply px-2.5 py-1.5 text-xs;
+}
+
+.btn-indigo {
+  @apply bg-indigo-600;
+
+  &:hover {
+    @apply bg-indigo-700;
+  }
+
+  &:focus {
+    @apply ring-indigo-500;
+  }
+}
+
+.btn-green {
+  @apply bg-green-600;
+
+  &:hover {
+    @apply bg-green-700;
+  }
+
+  &:focus {
+    @apply ring-green-500;
+  }
+}
+
+.field_with_errors {
+  input {
+    @apply border-red-500;
+  }
+
+  label {
+    @apply text-red-500;
+  }
+}
+
+.form-error {
+  @apply text-red-500;
+}
