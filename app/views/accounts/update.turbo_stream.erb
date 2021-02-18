@@ -1,0 +1,4 @@
+<%=
+  turbo_stream.replace(@account, partial: "accounts/account", locals: { account: @account, effect: 'flash' })
+  turbo_stream.replace("account_form", partial: "accounts/form", locals: { account: Account.new })
+%>

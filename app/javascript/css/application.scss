@@ -46,6 +46,30 @@
   }
 }
 
+.btn-red {
+  @apply bg-red-600;
+
+  &:hover {
+    @apply bg-red-700;
+  }
+
+  &:focus {
+    @apply ring-red-500;
+  }
+}
+
+.btn-cyan {
+  @apply bg-cyan-600;
+
+  &:hover {
+    @apply bg-cyan-700;
+  }
+
+  &:focus {
+    @apply ring-cyan-500;
+  }
+}
+
 .field_with_errors {
   input {
     @apply border-red-500;

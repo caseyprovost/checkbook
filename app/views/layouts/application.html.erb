@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
   </head>
 
-  <body class="font-sans font-normal leading-normal text-gray-800 bg-gray-900" data-controller="modal">
+  <body class="font-sans font-normal leading-normal text-gray-800 bg-gray-900">
     <%= render "shared/flash" %>
     <%= render "shared/header" %>
 
@@ -20,7 +20,7 @@
     </main>
 
     <%= turbo_frame_tag "modal" do %>
-      <div id="modal_container" data-reflex-permanent></div>
+      <div></div>
     <% end %>
   </body>
 </html>

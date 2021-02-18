@@ -6,6 +6,10 @@ class Account < ApplicationRecord
 
   monetize :starting_balance_cents, numericality: true
 
+  after_create_commit { broadcast_prepend_to "accounts" }
+  after_update_commit { broadcast_replace_to "accounts" }
+  after_destroy_commit { broadcast_remove_to "accounts" }
+
   def balance
     starting_balance - checks_total
   end

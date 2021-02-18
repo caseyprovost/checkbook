@@ -1,31 +1,38 @@
 <% if @accounts.any? %>
+  <%= turbo_stream_from "accounts" %>
   <div>
     <div class="flex justify-start items-center">
       <h3 class="text-gray-300 text-2xl">Your Accounts</h3>
-      <button class="btn btn-sm btn-indigo ml-4" data-action="click->modal#open" data-reflex-value="Accounts#new">
-      <svg class="-ml-0.5 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
-      </svg>
-      Add an Account
-    </button>
-  </div>
+      <%= turbo_frame_tag "accounts_actions", target: "modal" do %>
+        <%= link_to new_account_path, class: "btn btn-sm btn-indigo ml-2" do %>
+          <svg class="-ml-0.5 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+          </svg>
+          Add an Account
+        <% end %>
+      <% end %>
+    </div>
 
     <div class="shadow overflow-hidden sm:rounded-md mt-4">
-      <ul class="divide-y divide-gray-200">
-        <% @accounts.each do |account| %>
-          <%= render account %>
-        <% end %>
-      </ul>
+      <%= turbo_frame_tag "accounts" do %>
+        <ul class="divide-y divide-gray-200">
+          <% @accounts.each do |account| %>
+            <%= render "account", effect: 'none', account: account %>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
 <% else %>
   <div class="p-4 items-center flex justify-between border-2 border-dashed border-gray-700 rounded">
     <h3>Whelp this is awkward, you don't have any accounts yet</h3>
-    <button class="btn btn-indigo" data-action="click->modal#open" data-reflex-value="Accounts#new">
-      <svg class="-ml-0.5 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
-      </svg>
-      Add an Account
-    </button>
+    <%= turbo_frame_tag "accounts_empty", target: "modal" do %>
+      <%= link_to new_account_path, class: "btn btn-indigo" do %>
+        <svg class="-ml-0.5 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+        </svg>
+        Add an Account
+      <% end %>
+    <% end %>
   </div>
 <% end %>
